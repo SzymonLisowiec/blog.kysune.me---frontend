@@ -1,0 +1,19 @@
+.page-enter-active, .page-leave-active {
+	transition: opacity .24s;
+}
+
+.page-enter, .page-leave-to {
+	opacity: 0;
+}
+
+.slide-left-enter {
+	transition: transform .24s, opacity .24s;
+	opacity: 0;
+	transform: translate(16px, 0);
+}
+
+.slide-left-leave-active{
+	transition: transform .24s, opacity .24s;
+	opacity: 0;
+	transform: translate(-16px, 0);
+}
