@@ -85,9 +85,9 @@
 
 		&_home {
 			display: inline-block;
-			font-size: 21px;
-			font-weight: 700;
 			font-family: 'Comfortaa', sans-serif;
+			font-weight: 700;
+			font-size: 21px;
 			text-decoration: none;
 			color: #444;
 			cursor: pointer;

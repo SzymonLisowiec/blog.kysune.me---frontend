@@ -16,8 +16,7 @@ module.exports = {
 			{ hid: 'description', name: 'description', content: 'Mój osobisty blog, na którym mam zamiar skupiać się na różnorodnych tematach, wyszczególniając tworzenie aplikacji webowych.' }
 		],
 		link: [
-			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-			{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700|Open+Sans:300,300i,400,400i,600,600i|Montserrat:400,500,600&amp;subset=latin-ext" rel="stylesheet' }
+			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
 		]
 	},
 
@@ -28,6 +27,7 @@ module.exports = {
 	
 	css: [
 		'normalize.css',
+		'assets/fonts.css',
 		'assets/transitions.css'
 	],
 

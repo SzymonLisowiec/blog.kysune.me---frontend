@@ -138,8 +138,8 @@
 
 			&_title {
 				margin: 46px 0 12px 0;
-				font-family: 'Montserrat', sans-serif;
-				font-weight: 600;
+				font-family: 'Comfortaa', sans-serif;
+				font-weight: 700;
 				font-size: 42px;
 				color: #111;
 				z-index: 1;
