@@ -36,13 +36,7 @@
 </template>
 
 <script>
-	import fontawesome from '@fortawesome/fontawesome';
 	import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-	import { faCog, faFlagCheckered } from '@fortawesome/fontawesome-free-solid';
-	import Moment from 'moment';
-
-	Moment.locale('pl');
-	fontawesome.library.add(faCog, faFlagCheckered);
 
 	export default {
 
@@ -85,8 +79,8 @@
 					articles[i].link = articles[i].title.replace(/\s/gi, '+');
 					
 					articles[i].date = {
-						day: Moment(articles[i].time * 1000).format('D'),
-						month: Moment(articles[i].time * 1000).format('MMMM')
+						day: this.$moment(articles[i].time * 1000).format('D'),
+						month: this.$moment(articles[i].time * 1000).format('MMMM')
 					}
 
 				}

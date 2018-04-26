@@ -36,6 +36,8 @@ module.exports = {
 	],
 
 	plugins: [
+		'~/plugins/moment',
+		'~/plugins/font-awesome',
 		{ src: '~/plugins/vue-infinite-scroll', ssr: false }
 	],
 

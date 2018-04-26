@@ -27,7 +27,6 @@
 </template>
 
 <script>
-	import Moment from 'moment';
 	import Showdown from 'showdown';
 	import Prism from 'prismjs';
 	import PrismLanguages from 'prism-languages';
@@ -99,7 +98,7 @@
 			},
 
 			article_time () {
-				return Moment(this.article.time * 1000).format('YYYY-MM-DD HH:mm');
+				return this.$moment(this.article.time * 1000).format('YYYY-MM-DD HH:mm');
 			}
 
 		},

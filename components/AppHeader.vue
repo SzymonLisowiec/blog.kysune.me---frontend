@@ -25,11 +25,7 @@
 </template>
 
 <script>
-	import fontawesome from '@fortawesome/fontawesome';
 	import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-	import { faTwitterSquare, faLinkedin, faFacebook, faGithubSquare } from '@fortawesome/fontawesome-free-brands';
-	
-	fontawesome.library.add(faTwitterSquare, faLinkedin, faFacebook, faGithubSquare);
 
 	export default {
 
