@@ -151,6 +151,7 @@
 				padding: 32px 20px;
 				font-size: 17px;
 				font-weight: 400;
+				word-break: break-all;
 
 				p {
 					margin-bottom: 32px;
@@ -447,7 +448,7 @@
 
 		.page--article {
 
-			padding: 16px;
+			padding: 32px 16px;
 
 			.article {
 

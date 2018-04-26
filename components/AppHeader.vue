@@ -156,8 +156,6 @@
 		
 		.app-header {
 
-			height: 64px;
-
 			.container {
 				
 				padding: 0 8px;

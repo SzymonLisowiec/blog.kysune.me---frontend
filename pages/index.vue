@@ -4,7 +4,7 @@
 		<section class="articles" v-infinite-scroll="loadMorePosts" infinite-scroll-disabled="infinite_scroll_isDisabled" infinite-scroll-distance="10">
 			<h1 class="articles_header">Artykuły</h1>
 			
-			<nuxt-link :to="'/article/' + article.id" class="article" v-for="(article, index) in articles" :key="index" tag="article">
+			<article class="article" v-for="(article, index) in articles" :key="index">
 
 				<div class="calendar-date">
 					<div class="calendar-date_day">{{ article.date.day }}</div>
@@ -13,7 +13,11 @@
 
 				<div class="article_informations">
 
-					<h2 class="article_title">{{ article.title }}</h2>
+					<h2 class="article_title">
+						<nuxt-link :to="'/article/' + article.id" class="article_link" tag="a">
+							{{ article.title }}
+						</nuxt-link>
+					</h2>
 
 					<ul class="tags">
 						<nuxt-link :to="'/tag/' + tag" class="tags_item" v-for="(tag, tag_index) in article.tags" :key="tag_index" tag="li">{{ tag }}</nuxt-link>
@@ -21,7 +25,7 @@
 
 				</div>
 
-			</nuxt-link>
+			</article>
 
 			<font-awesome-icon v-if="infinite_scroll_state === 'busy'" class="articles_infinite-scroll-progress" :icon="['fas', 'cog']" size="2x" spin />
 			<font-awesome-icon v-if="infinite_scroll_state === 'end'" class="articles_infinite-scroll-progress" :icon="['fas', 'flag-checkered']" size="2x" />
@@ -136,7 +140,6 @@
 				min-height: 100px;
 				margin: 16px 0;
 				border: 1px solid #eee;
-				cursor: pointer;
 
 				.calendar-date {
 					
@@ -170,7 +173,18 @@
 				&_title {
 					font-size: 25px;
 					padding-bottom: 16px;
+				}
+
+				&_link {
+					color: #222;
+					text-decoration: none;
+					cursor: pointer;
 					transition: color .32s;
+
+					&:hover {
+						color: #00a8ff;
+					}
+
 				}
 
 				&_content {
@@ -209,10 +223,6 @@
 
 					}
 
-				}
-
-				&:hover .article_title {
-					color: #00a8ff;
 				}
 
 			}

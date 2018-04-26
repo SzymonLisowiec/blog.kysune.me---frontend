@@ -59,6 +59,6 @@
 
 	.page {
 		min-height: calc(100vh - 48px);
-		padding: 64px 16px;
+		padding: 64px 16px 32px 16px;
 	}
 </style>
