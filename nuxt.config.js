@@ -13,7 +13,7 @@ module.exports = {
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ hid: 'description', name: 'description', content: 'Mój osobisty blog, na którym mam zamiar skupiać się na różnorodnych tematach, wyszczególniając tworzenie aplikacji webowych.' }
+			{ hid: 'description', name: 'description', content: 'Mój osobisty blog, w którym mam zamiar skupiać się na różnorodnych tematach, wyszczególniając tworzenie aplikacji webowych.' }
 		],
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }

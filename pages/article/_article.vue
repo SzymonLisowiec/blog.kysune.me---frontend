@@ -53,20 +53,22 @@
 	
 	Showdown.extension('prismjs', function () {
 		return [{
-		type:   'output',
-		filter: function (source) {
-			return source.replace(/<pre([^>]*)><code([^>]*)>([^>]*)<\/code><\/pre>/gi, (match, pre, code_class, code) => {
-				
-				if(code_class){
-					let language = code_class.match(/language\-([A-Za-z0-9_+]*)/g)[0].replace('language-', '');
-					console.log(code_class);
-					if(typeof PrismLanguages[language] != 'undefined')
-						return '<div class="code-block"><div class="language">' + language + '</div><pre' + code_class + '><code' + code_class + '>' + Prism.highlight(code, PrismLanguages[language], language) + '</code></pre></div>';
-				}
-				
-				return '<div class="code-block"><div class="language"></div><pre class="language-markup"><code  class="language-markup">' + code + '</code></pre></div>';
-			});
-		}
+			type:   'output',
+			filter: function (source) {
+				return source.replace(/<pre([^>]*)><code([^>]*)>([^>]*)<\/code><\/pre>/gi, (match, pre, code_class, code) => {
+					
+					code = new DOMParser().parseFromString(code, 'text/html');
+					code = code.documentElement.textContent;
+
+					if(code_class){
+						let language = code_class.match(/language\-([A-Za-z0-9_+]*)/g)[0].replace('language-', '');
+						if(typeof PrismLanguages[language] != 'undefined')
+							return '<div class="code-block"><div class="language">' + language + '</div><pre' + code_class + '><code' + code_class + '>' + Prism.highlight(code, PrismLanguages[language], language) + '</code></pre></div>';
+					}
+					
+					return '<div class="code-block"><div class="language"></div><pre class="language-markup"><code  class="language-markup">' + code + '</code></pre></div>';
+				});
+			}
 		}];
 	});
 
@@ -84,6 +86,56 @@
 	});
 	
 	export default {
+
+		head () {
+
+			let meta = [
+
+				{
+					hid: 'og:title',
+					property: 'og:title',
+					content: this.article.title
+				},
+
+				{
+					hid: 'og:type',
+					property: 'og:type',
+					content: 'article'
+				}
+
+			];
+
+			if(this.article.description){
+
+				meta.push({
+					hid: 'description',
+					name: 'description',
+					content: this.article.description
+				});
+
+				meta.push({
+					hid: 'og:description',
+					property: 'og:description',
+					content: this.article.description
+				});
+
+			}
+
+			if(this.article.keywords)
+				meta.push({
+					hid: 'keywords',
+					name: 'keywords',
+					content: this.article.keywords
+				});
+
+			return {
+
+				title: this.article.title,
+
+				meta
+				
+			};
+		},
 
 		data () {
 			return {
@@ -108,7 +160,7 @@
 			article = article.replace(/\+/g, ' ');
 
 			let { data } = await $axios.get('/api/post/' + article);
-
+			
 			return {
 				article: data
 			};
@@ -147,18 +199,36 @@
 
 			&_content {
 				font-family: 'Open Sans', sans-serif;
-				padding: 32px 20px;
+				padding: 0 20px 32px 20px;
 				font-size: 17px;
 				font-weight: 400;
-				word-break: break-all;
+				word-break: break-word;
+
+				h1, h2, h3, h4, h5, h6 {
+					margin: 20px 0 10px 0;
+				}
+
+				h2 {
+					margin: 30px 0 15px 0;
+				}
 
 				p {
-					margin-bottom: 32px;
+					margin-bottom: 15px;
 
 					&:first-child {
 						font-weight: 600;
 					}
 
+				}
+
+				ul {
+					padding: 0 32px;
+				}
+
+				code {
+					padding: 2px 4px;
+					font-size: 15px;
+					background: #eee;
 				}
 
 				.align-left { text-align: left; }
@@ -167,7 +237,7 @@
 
 				.code-block > .language {
 					width: 100%;
-					padding: 4px 8px;
+					padding: 2px 8px;
 					font-size: 13px;
 					font-weight: 600;
 					color: #fff;
