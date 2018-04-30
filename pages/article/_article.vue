@@ -30,7 +30,6 @@
 	import Showdown from 'showdown';
 	import Prism from 'prismjs';
 	import PrismLanguages from 'prism-languages';
-	import UnescapeHTML from 'unescape';
 
 	Showdown.extension('palign', _ => {
 		return [{
