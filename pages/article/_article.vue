@@ -233,6 +233,10 @@
 					padding: 0 32px;
 				}
 
+				img {
+					max-width: 100%;
+				}
+
 				code {
 					padding: 2px 4px;
 					font-size: 15px;
