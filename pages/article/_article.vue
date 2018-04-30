@@ -55,10 +55,19 @@
 	Showdown.extension('prismjs', function () {
 		return [{
 			type:   'output',
-			filter: function (source) {
+			filter: function (source) { //I don't know, why Showdown escaping html here.
 				return source.replace(/<pre([^>]*)><code([^>]*)>([^>]*)<\/code><\/pre>/gi, (match, pre, code_class, code) => {
 					
-					code = UnescapeHTML(code);
+					code = code.replace(/\&quot\;/g, '"')
+								.replace(/\&\#39\;/g, '\'')
+								.replace(/\&\#34\;/g, '"')
+								.replace(/\&apos\;/g, '\'')
+								.replace(/\&amp\;/g, '&')
+								.replace(/\&\#38\;/g, '&')
+								.replace(/\&gt\;/g, '>')
+								.replace(/\&\#62\;/g, '>')
+								.replace(/\&lt\;/g, '<')
+								.replace(/\&\#60\;/g, '<');
 
 					if(code_class){
 						let language = code_class.match(/language\-([A-Za-z0-9_+]*)/g)[0].replace('language-', '');
