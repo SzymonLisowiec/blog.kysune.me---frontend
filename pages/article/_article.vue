@@ -30,6 +30,7 @@
 	import Showdown from 'showdown';
 	import Prism from 'prismjs';
 	import PrismLanguages from 'prism-languages';
+	import UnescapeHTML from 'unescape';
 
 	Showdown.extension('palign', _ => {
 		return [{
@@ -57,8 +58,7 @@
 			filter: function (source) {
 				return source.replace(/<pre([^>]*)><code([^>]*)>([^>]*)<\/code><\/pre>/gi, (match, pre, code_class, code) => {
 					
-					code = new DOMParser().parseFromString(code, 'text/html');
-					code = code.documentElement.textContent;
+					code = UnescapeHTML(code);
 
 					if(code_class){
 						let language = code_class.match(/language\-([A-Za-z0-9_+]*)/g)[0].replace('language-', '');
@@ -133,7 +133,7 @@
 				title: this.article.title,
 
 				meta
-				
+
 			};
 		},
 
