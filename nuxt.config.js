@@ -1,3 +1,5 @@
+require('dotenv').config({ path: __dirname + '/.env' });
+
 module.exports = {
 
 	/*
@@ -38,7 +40,8 @@ module.exports = {
 	plugins: [
 		'~/plugins/moment',
 		'~/plugins/font-awesome',
-		{ src: '~/plugins/vue-infinite-scroll', ssr: false }
+		{ src: '~/plugins/vue-infinite-scroll', ssr: false },
+		{ src: '~/plugins/ga', ssr: false }
 	],
 
 	axios: {
@@ -47,6 +50,10 @@ module.exports = {
 
 	proxy: {
 		'/api/': { target: 'http://localhost:8080', pathRewrite: {'^/api/': ''} }
+	},
+
+	env: {
+		GA: process.env.GA
 	},
 
 	/*
