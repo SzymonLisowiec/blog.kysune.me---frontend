@@ -243,7 +243,7 @@
 				ul, ol {
 					// padding: 0 32px;
 					margin: .8em 0;
-					padding: 0 40px;
+					padding: 0 0 0 40px;
 					list-style: none;
 
 					li {
